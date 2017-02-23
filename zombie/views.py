@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from zombie.models import Player, Item
-from zombie.serializers import PlayerSerializer, ItemSerializer
+from zombie.models import Player, Item, Inventory
+from zombie.serializers import PlayerSerializer, ItemSerializer, InventorySerializer
 
 def index(request):
     return HttpResponse("Hello, world. You're at the Zombies index.")
@@ -32,3 +32,12 @@ def item_list(request, format = None):
         return Response(serializer.data)
 
 
+@api_view(['GET'])
+def inventory_list(request, format = None):
+    """
+    List all items, or create a new item.
+    """
+    if request.method == 'GET':
+        inventories = Inventory.objects.all()
+        serializer = InventorySerializer(inventories, many=True)
+        return Response(serializer.data)
