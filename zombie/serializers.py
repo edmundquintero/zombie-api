@@ -19,12 +19,9 @@ class InventorySerializer(serializers.ModelSerializer):
         model = Inventory
         fields = '__all__'
 
-
 class PlayerSerializer(serializers.ModelSerializer):
     inventory = InventorySerializer(many=True, read_only=True)
 
     class Meta:
         model = Player
-        fields = ('player_name', 'inventory')
-
-
+        fields = ('player_name', 'health', 'inventory')
