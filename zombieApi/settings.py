@@ -25,18 +25,23 @@ SECRET_KEY = '_l*50f0_6*l8ua!k@(fzf4l2iynk6p%pt$9&*-9#z@^&!0qrjl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['10.13.70.113', '127.0.0.1', 'localhost']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'account.apps.AccountConfig',
+    'game.apps.GameConfig',
+    'zone.apps.ZoneConfig',
+    'player.apps.PlayerConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
